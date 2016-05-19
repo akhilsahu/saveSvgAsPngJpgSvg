@@ -279,9 +279,9 @@
 
 
 
-function genuri(istyp)
+function genuri(istyp,svgid)
 {
-   svgAsPngUri(document.getElementById("svg"), {}, function(uri)
+   svgAsPngUri(document.getElementById(svgid), {}, function(uri)
     {
         document.querySelector('#png-container').innerHTML = '<img id="getimg" style="display:none" src="'+uri+'"/>';
          
@@ -380,6 +380,3 @@ function genuri(istyp)
       }
 });
 }
-
-
- 
