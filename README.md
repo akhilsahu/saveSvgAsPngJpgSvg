@@ -30,3 +30,6 @@ Include the
    
          genuri('svg','svgid')
 
+Note: Pdf is also possible if you include jspdf :https://github.com/MrRio/jsPDF
+            Call function 
+                  genuri('pdf','svgid')
