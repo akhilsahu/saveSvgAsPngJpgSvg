@@ -16,7 +16,6 @@ Include the
    
                <p id="canvasHolder"></p>
 
-
 2. Call
          
              genuri(type,idofSvg)
