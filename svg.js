@@ -374,9 +374,9 @@ function genuri(istyp)
       // Converts canvas to an image
       function convertCanvasToImage(canvas)
        {
-          var image = new Image();
-          image.src = canvas.toDataURL("image/png");
-          return image;
+          var images = new Image();
+          images.src = canvas.toDataURL("image/png");
+          return images;
       }
 });
 }
