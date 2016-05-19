@@ -276,9 +276,12 @@
 })();
 
 
-function genuri(istyp,idsvg)
+
+
+
+function genuri(istyp)
 {
-   svgAsPngUri(document.getElementById(idsvg), {}, function(uri)
+   svgAsPngUri(document.getElementById("svg"), {}, function(uri)
     {
         document.querySelector('#png-container').innerHTML = '<img id="getimg" style="display:none" src="'+uri+'"/>';
          
@@ -288,11 +291,7 @@ function genuri(istyp,idsvg)
       // Actions
        document.getElementById("canvasHolder").appendChild(canvas);
      
-       var canvas = document.getElementById("mycanvas");
-           var ctx=canvas.getContext("2d");
-        ctx.font="10px Georgia";
-       ctx.fillText("Site: <?php echo($sit_nam); ?>",10,30);
-       ctx.fillText("Date Range: <?php echo($_SESSION[start_date]).' to '.$_SESSION[end_date];  ?>",10,50);
+      
        var imag = canvas.toDataURL("image/jpeg");
       var imagpng = canvas.toDataURL("image/png");
 
@@ -308,10 +307,10 @@ function genuri(istyp,idsvg)
                   
           break;
           case 'pdf':  
-                /*var pdf = new jsPDF();
+                var pdf = new jsPDF();
                 pdf.addImage(imag, 'JPEG', 0, 0);
                 var download = document.getElementById('download');
-                pdf.save("download.pdf");*/
+                pdf.save("download.pdf");
                
           break;
           case 'jpg':
@@ -325,6 +324,7 @@ function genuri(istyp,idsvg)
           break;
           case 'svg':
               svgAsDataUri(document.getElementById("svg"), {}, function(uri) {
+                console.log(uri);
               var a = document.createElement("a");
                 a.href=uri;
                 a.download="fil.svg";
@@ -340,7 +340,8 @@ function genuri(istyp,idsvg)
           $("#mycanvas").remove();
            
         }
-function printCanvas()  
+
+        function printCanvas()  
 {  
     var dataUrl = document.getElementById('mycanvas').toDataURL("image/jpeg"); //attempt to save base64 string to server using this var  
     var windowContent = '<!DOCTYPE html>';
@@ -358,7 +359,7 @@ function printCanvas()
     printWin.print();
     printWin.close();
 }
-function convertImageToCanvas(image)
+      function convertImageToCanvas(image)
        {
           var canvas = document.createElement("canvas");
           canvas.width = image.width;
@@ -369,3 +370,16 @@ function convertImageToCanvas(image)
 
          return canvas;  
       }
+
+      // Converts canvas to an image
+      function convertCanvasToImage(canvas)
+       {
+          var image = new Image();
+          image.src = canvas.toDataURL("image/png");
+          return image;
+      }
+});
+}
+
+
+ 
